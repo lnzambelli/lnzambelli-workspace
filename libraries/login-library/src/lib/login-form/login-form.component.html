@@ -1,0 +1,24 @@
+<form [formGroup]="form" class="flex flex-column justify-center w-100">
+    <mat-form-field class="w-100">
+        <mat-label>E-mail</mat-label>
+        <input type="email" matInput formControlName="mail">
+        <mat-error *ngIf="emailField!.hasError('required')">
+            El campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="emailField!.hasError('email')">
+            El campo requiere formato correo electronico
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput formControlName="password">
+        <mat-error *ngIf="passwordField!.hasError('required')">
+            El campo es obligatorio
+        </mat-error>
+        <mat-error *ngIf="passwordField!.hasError('minlength')">
+            El campo debe tener al menos 6 caracteres
+        </mat-error>
+    </mat-form-field>
+</form>
+<a class="mt-8">¿Ha olvidado su contraseña?</a>
+<button mat-raised-button color="primary" type="button" (click)="logIn()" [disabled]="form.invalid">Ingresar</button>

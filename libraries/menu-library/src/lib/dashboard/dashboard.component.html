@@ -1,0 +1,15 @@
+<nav class="flex flex-wrap justify-evenly">
+  <mat-card *ngFor="let card of cardsStore.state$ | async">
+    <mat-card-content class="dashboard-card-content">
+      <h3 *ngIf="card.title != ''">{{ card.title }}</h3>
+      <img *ngIf="card.imagen" [src]="card.imagen" />
+      <div class="flex justify-end">
+        <button *ngFor="let button of card.buttons" type="button" color="accent" mat-raised-button
+          (click)="redirectTo(button.url)">
+          {{ button.caption }}
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</nav>
